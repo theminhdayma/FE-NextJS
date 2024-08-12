@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Bài tập 2: 
 
-## Getting Started
+.next: Thư mục được tạo tự động khi bạn chạy dự án Next.js. Nó chứa các tệp đã được biên dịch, bộ nhớ đệm và các tệp phục vụ cho ứng dụng.
 
-First, run the development server:
+app: Thư mục chứa các thành phần và logic chính của ứng dụng Next.js của bạn. Đây là nơi bạn viết mã cho các trang, API routes, và các thành phần React.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+node_modules: Thư mục này chứa tất cả các gói và thư viện mà dự án của bạn đã cài đặt thông qua npm hoặc yarn.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+public: Thư mục này chứa các tệp tĩnh như hình ảnh, biểu tượng, và các tệp khác mà bạn muốn phục vụ trực tiếp mà không qua xử lý bởi Next.js.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+.eslintrc.json: Tệp cấu hình cho ESLint, công cụ phân tích mã nguồn tĩnh để tìm lỗi trong JavaScript/TypeScript.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+.gitignore: Tệp này chỉ định các tệp và thư mục mà Git sẽ bỏ qua, không theo dõi khi bạn commit vào repository.
 
-## Learn More
+next-env.d.ts: Tệp này được Next.js tạo tự động để hỗ trợ TypeScript trong dự án của bạn, khai báo các loại biến môi trường.
 
-To learn more about Next.js, take a look at the following resources:
+next.config.mjs: Tệp cấu hình cho Next.js, nơi bạn có thể tùy chỉnh các thiết lập của framework như đường dẫn, tối ưu hóa hình ảnh, và hơn thế nữa.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+package-lock.json: Tệp này đảm bảo rằng các gói npm được cài đặt một cách nhất quán trong mọi môi trường bằng cách khóa phiên bản chính xác của các gói đã cài đặt.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+package.json: Tệp này chứa thông tin về dự án của bạn, bao gồm các script, dependencies, và metadata khác.
 
-## Deploy on Vercel
+postcss.config.mjs: Tệp cấu hình cho PostCSS, một công cụ để xử lý CSS với các plugin.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+README.md: Tệp này thường chứa tài liệu hướng dẫn hoặc thông tin về dự án của bạn. Được viết bằng Markdown.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+tailwind.config.ts: Tệp cấu hình cho Tailwind CSS, nơi bạn có thể tuỳ chỉnh các thiết lập như màu sắc, khoảng cách, và các tiện ích khác.
+
+tsconfig.json: Tệp cấu hình cho TypeScript, nơi bạn có thể cấu hình cách TypeScript biên dịch mã của bạn.
