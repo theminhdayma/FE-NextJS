@@ -1,0 +1,36 @@
+.container {
+    width: 600px;
+    background-color: beige;
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.success {
+    background-color: greenyellow;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.warning {
+    background-color: orange;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.danger {
+    background-color: red;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
+.primary {
+    background-color: blue;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 12px;
+}
