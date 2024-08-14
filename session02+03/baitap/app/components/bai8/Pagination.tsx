@@ -29,14 +29,16 @@ export default function Pagination() {
       <div className={paginationStyles.ul}>
         <button
           onClick={handlePrev}
-          className={paginationStyles.paginationButton}
+          className={`${paginationStyles.paginationButton}  `}
         >
           Prev
         </button>
         {totalPages.map((page, index) => (
           <button
             key={index}
-            className={` ${currentPage === page + 1 ? paginationStyles.li : ""}`}
+            className={` ${
+              currentPage === page ? paginationStyles.li : ""
+            }`}
             onClick={() => handlePageClick(page)}
           >
             {page}

@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import "./globals.css";
 import Input from "./components/bai1/Input";
 import CheckBox from "./components/bai2/CheckBox";
@@ -10,8 +11,22 @@ import BaseButton from "./components/bai7/BaseButton";
 import Pagination from "./components/bai8/Pagination";
 import BaseAlert from "./components/bai9/BaseAlert";
 import BaseCart from "./components/bai10/BaseCart";
+import Select from "./components/bai11/Select";
+import Date from "./components/bai12/Date";
 
 export default function page() {
+  const [selectedValue, setSelectedValue] = useState({});
+
+  const options = [
+    { value: 1, label: "HTML" },
+    { value: 2, label: "CSS" },
+    { value: 3, label: "JavaScript" },
+    { value: 4, label: "NextJS" },
+  ];
+
+  const handleChange = (option: any) => {
+    setSelectedValue(option);
+  };
   return (
     <div className="ml-[250px]">
       <h1>Bài 1</h1>
@@ -54,6 +69,16 @@ export default function page() {
           image="https://img.lovepik.com/free-png/20210923/lovepik-t-shirt-png-image_401190055_wh1200.png"
         />
       </div>
+      <br />
+      <h1>Bài 11</h1>
+      <Select
+        options={options}
+        value={selectedValue}
+        handleChange={handleChange}
+      />
+      <br />
+      <h1>Bài 12</h1>
+      <Date/>
     </div>
   );
 }
