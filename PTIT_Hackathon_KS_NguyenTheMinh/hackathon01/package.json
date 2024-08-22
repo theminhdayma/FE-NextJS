@@ -13,7 +13,9 @@
     "file-system": "^2.2.2",
     "next": "14.2.6",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.12.4"
   },
   "devDependencies": {
     "@types/node": "^20",

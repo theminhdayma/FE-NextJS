@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import swal from "sweetalert2";
 
 interface Employee {
   id: number;
@@ -73,20 +74,33 @@ export default function EmployeeManagement() {
   };
 
   const handleDelete = async (id: number) => {
-    if (confirm("Bạn có chắc chắn muốn xóa nhân viên này?")) {
-      try {
-        const response = await axios.delete(`/api/employee/${id}`);
-        if (response.data.message === "xóa thành công") {
-          setListEmployee(listEmployee.filter((employee) => employee.id !== id));
-        } else {
-          setError("Có lỗi xảy ra khi xóa nhân viên.");
+    swal
+      .fire({
+        title: "Bạn có chắc chắn?",
+        text: "Bạn sẽ không thể khôi phục dữ liệu này!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Xóa",
+      })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await axios.delete(`/api/employee/${id}`);
+            if (response.data.message === "xóa thành công") {
+              setListEmployee(listEmployee.filter((employee) => employee.id !== id));
+              swal.fire("Đã xóa!", "Nhân viên của bạn đã bị xóa.", "success");
+            } else {
+              swal.fire("Có lỗi!", "Không thể xóa nhân viên.", "error");
+            }
+          } catch (error) {
+            swal.fire("Có lỗi!", "Không thể xóa nhân viên.", "error");
+          }
         }
-      } catch (error) {
-        setError("Có lỗi xảy ra khi xóa nhân viên.");
-        console.error(error);
-      }
-    }
+      });
   };
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -118,32 +132,33 @@ export default function EmployeeManagement() {
       setError(errorMessage);
       return;
     }
-
+  
     try {
       if (isEditing) {
         const response = await axios.put(`/api/employee/${editingId}`, formData);
         if (response.data.message === "cập nhập thành công") {
-          alert("Cập nhật nhân viên thành công!");
+          swal.fire("Cập nhật thành công!", "Nhân viên đã được cập nhật.", "success");
         } else {
-          setError(response.data.message || "Có lỗi xảy ra khi cập nhật nhân viên.");
+          swal.fire("Có lỗi!", response.data.message || "Có lỗi xảy ra khi cập nhật nhân viên.", "error");
         }
       } else {
         const response = await axios.post("/api/employee", formData);
         if (response.data.error) {
           setError(response.data.error);
+          swal.fire("Có lỗi!", response.data.error, "error");
           return;
         }
-        alert("Thêm nhân viên thành công!");
+        swal.fire("Thêm thành công!", "Nhân viên đã được thêm vào danh sách.", "success");
       }
-
+  
       resetForm();
       setEditingId(null);
       fetchEmployees();
     } catch (error) {
-      setError("Có lỗi xảy ra khi thêm hoặc cập nhật nhân viên.");
-      console.error(error);
+      swal.fire("Có lỗi!", "Có lỗi xảy ra khi thêm hoặc cập nhật nhân viên.", "error");
     }
   };
+  
 
   return (
     <div className="container mx-auto px-4 py-6">
