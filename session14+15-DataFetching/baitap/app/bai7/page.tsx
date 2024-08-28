@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 
 interface Product {
@@ -9,17 +9,17 @@ interface Product {
   image: string;
 }
 
-interface ProductFilterProps {
-    products: Product[];
-    minPrice: number;
-    maxPrice: number;
-    setMinPrice: React.Dispatch<React.SetStateAction<number>>;
-    setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
-    onFilter: () => void;
-    filteredProducts: Product[];
-  }
+interface Props {
+  products: Product[];
+  minPrice: number;
+  maxPrice: number;
+  setMinPrice: React.Dispatch<React.SetStateAction<number>>;
+  setMaxPrice: React.Dispatch<React.SetStateAction<number>>;
+  onFilter: () => void;
+  filteredProducts: Product[];
+}
 
-export default function page () {
+export default function page() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [minPrice, setMinPrice] = useState<number>(0);
@@ -42,7 +42,9 @@ export default function page () {
 
   const handleFilter = async () => {
     try {
-      const response = await fetch(`/api/filter-products?minPrice=${minPrice}&maxPrice=${maxPrice}`);
+      const response = await fetch(
+        `/api/filter-products?minPrice=${minPrice}&maxPrice=${maxPrice}`
+      );
       const filtered = await response.json();
       setFilteredProducts(filtered);
     } catch (error) {
@@ -68,9 +70,9 @@ export default function page () {
       />
     </div>
   );
-};
+}
 
-const ProductFilter: React.FC<ProductFilterProps> = ({
+const ProductFilter: React.FC<Props> = ({
   minPrice,
   maxPrice,
   setMinPrice,
